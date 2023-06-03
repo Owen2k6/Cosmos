@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 
 using IL2CPU.API.Attribs;
@@ -725,43 +726,44 @@ namespace Cosmos.Core {
             // 1/0: exception number in hex
             unsafe
             {
+                Console.SetWindowSize(80, 25);
                 byte* xAddress = (byte*)0xB8000;
-                PutErrorString(0, 0, "GoOS Has encountered a fatal error and must halt all operations.");
-                PutErrorString(1, 0, "Please report this error to the discord server. (https://dsc.owen2k6.com/)");
-                PutErrorString(2, 0, "System Drive: 0:\\");
-                PutErrorString(3, 0, "GoOS Kernel Version: 1.0.1");
-                PutErrorString(4, 0, "System Error Report ======================");
-                PutErrorString(5, 0, "Error Code: 0x");
-                PutErrorChar(5, 14, xHex[(int)((ctx.Interrupt >> 4) & 0xF)]);
-                PutErrorChar(5, 15, xHex[(int)(ctx.Interrupt & 0xF)]);
-                PutErrorString(6, 0, aName);
-                PutErrorString(7, 0, aDescription);
-                PutErrorString(8, 0, "Last known address: 0x");
+                PutErrorString(1, 0, "GoOS Has encountered a fatal error and must halt all operations.");
+                PutErrorString(2, 0, "Please report this error to the discord server. (https://dsc.owen2k6.com/)");
+                PutErrorString(3, 0, "System Drive: 0:\\");
+                PutErrorString(4, 0, "GoOS Kernel Version: 1.0.2");
+                PutErrorString(5, 0, "System Error Report ======================");
+                PutErrorString(6, 0, "Error Code: 0x");
+                PutErrorChar(6, 14, xHex[(int)((ctx.Interrupt >> 4) & 0xF)]);
+                PutErrorChar(6, 15, xHex[(int)(ctx.Interrupt & 0xF)]);
+                PutErrorString(7, 0, aName);
+                PutErrorString(8, 0, aDescription);
+                PutErrorString(9, 0, "Last known address: 0x");
                 if (lastKnownAddressValue != 0)
                 {
-                    PutErrorChar(8, 22, xHex[(int)((lastKnownAddressValue >> 28) & 0xF)]);
-                    PutErrorChar(8, 23, xHex[(int)((lastKnownAddressValue >> 24) & 0xF)]);
-                    PutErrorChar(8, 24, xHex[(int)((lastKnownAddressValue >> 20) & 0xF)]);
-                    PutErrorChar(8, 25, xHex[(int)((lastKnownAddressValue >> 16) & 0xF)]);
-                    PutErrorChar(8, 26, xHex[(int)((lastKnownAddressValue >> 12) & 0xF)]);
-                    PutErrorChar(8, 27, xHex[(int)((lastKnownAddressValue >> 8) & 0xF)]);
-                    PutErrorChar(8, 28, xHex[(int)((lastKnownAddressValue >> 4) & 0xF)]);
-                    PutErrorChar(8, 29, xHex[(int)(lastKnownAddressValue & 0xF)]);
+                    PutErrorChar(9, 23, xHex[(int)((lastKnownAddressValue >> 28) & 0xF)]);
+                    PutErrorChar(9, 24, xHex[(int)((lastKnownAddressValue >> 24) & 0xF)]);
+                    PutErrorChar(9, 25, xHex[(int)((lastKnownAddressValue >> 20) & 0xF)]);
+                    PutErrorChar(9, 26, xHex[(int)((lastKnownAddressValue >> 16) & 0xF)]);
+                    PutErrorChar(9, 27, xHex[(int)((lastKnownAddressValue >> 12) & 0xF)]);
+                    PutErrorChar(9, 28, xHex[(int)((lastKnownAddressValue >> 8) & 0xF)]);
+                    PutErrorChar(9, 29, xHex[(int)((lastKnownAddressValue >> 4) & 0xF)]);
+                    PutErrorChar(9, 30, xHex[(int)(lastKnownAddressValue & 0xF)]);
                 }
                 else
                 {
-                    PutErrorString(8, 22, "0");
-                    PutErrorString(8, 23, "0");
-                    PutErrorString(8, 24, "0");
-                    PutErrorString(8, 25, "0");
-                    PutErrorString(8, 26, "0");
-                    PutErrorString(8, 27, "0");
-                    PutErrorString(8, 28, "0");
-                    PutErrorString(8, 29, "0");
+                    PutErrorString(9, 23, "0");
+                    PutErrorString(9, 24, "0");
+                    PutErrorString(9, 25, "0");
+                    PutErrorString(9, 26, "0");
+                    PutErrorString(9, 27, "0");
+                    PutErrorString(9, 28, "0");
+                    PutErrorString(9, 29, "0");
+                    PutErrorString(9, 30, "0");
                 }
 
-                PutErrorString(0, 0, "The system will now enter a locked state.");
-                PutErrorString(0, 0, "Please reboot your computer after reporting the error.");
+                PutErrorString(10,0, "The system will now enter a locked state.");
+                PutErrorString(10, 0, "Please reboot your computer after reporting the error.");
 
                 // byte* xAddress = (byte*)0xB8000;
                 //
